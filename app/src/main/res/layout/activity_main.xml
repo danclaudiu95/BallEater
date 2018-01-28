@@ -55,7 +55,7 @@
             android:src="@drawable/blue_ball_small" />
 
         <ImageView
-            android:id="@+id/ball"
+            android:id="@+id/bomb"
             android:layout_width="22dp"
             android:layout_height="22dp"
             android:src="@drawable/bomb_small" />
