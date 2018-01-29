@@ -18,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -43,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
         private ImageView blue;
 
         private ImageView bomb;
+
+        //Size
+        private int frameHeight;
+        private int boxSize;
 
 
         //Position
@@ -118,6 +123,9 @@ public class MainActivity extends AppCompatActivity {
                 boxY += 20;
 
             }
+
+            //Check box position
+            if (boxY < 0 ) boxY = 0;
             box.setY(boxY);
         }
 
@@ -127,6 +135,17 @@ public class MainActivity extends AppCompatActivity {
 
             if(start_flg == false) {
                 start_flg = true;
+
+                //
+
+                FrameLayout frame = (FrameLayout) findViewById(R.id.frame);
+                frameHeight = frame.getHeight();
+
+                boxY = (int) box.getY();
+
+                //the box is a square (height and width are the same)
+                boxSize = box.getHeight();
+
                 startLabel.setVisibility(View.GONE);
 
                 timer.schedule(new TimerTask() {
@@ -151,10 +170,11 @@ public class MainActivity extends AppCompatActivity {
                 } else if (me.getAction() == MotionEvent.ACTION_UP) {
                     action_flg = false;
                 }
+
             }
+            return true;
 
 
-                return true;
         }
 
 
