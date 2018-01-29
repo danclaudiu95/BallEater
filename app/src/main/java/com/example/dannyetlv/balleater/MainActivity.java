@@ -52,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
         private Handler handler = new Handler();
         private Timer timer = new Timer();
 
+        //Status check
+        private boolean action_flg = false;
+
+
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -113,6 +117,18 @@ public class MainActivity extends AppCompatActivity {
 
 
         public void changePos() {
+
+
+            //Move Box
+            if (action_flg == true) {
+                //Touching
+                boxY -= 20;
+            }
+            else {
+                //Releasing
+                boxY += 20;
+
+            }
             box.setY(boxY);
         }
 
@@ -122,11 +138,11 @@ public class MainActivity extends AppCompatActivity {
 
                 if (me.getAction() == MotionEvent.ACTION_DOWN) {
 
-                        boxY -= 20;
+                        action_flg = true;
 
+                } else if (me.getAction() == MotionEvent.ACTION_UP) {
+                    action_flg = false;
                 }
-
-                box.setY(boxY);
 
                 return true;
         }
