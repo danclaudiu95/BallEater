@@ -14,6 +14,7 @@
 package com.example.dannyetlv.balleater;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Point;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -145,10 +146,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
             scoreLabel.setText("Score :  0");
 
-
-
         boxY = 500;
-
 
         }
     @Override
@@ -242,7 +240,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             bomb.setY(bombY);
 
 
-        //Move Box
+            //Move Box
             if (action_flg == true) {
                 //Touching
                 boxY -= 20;
@@ -304,6 +302,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             timer = null;
 
             //Show result
+            Intent intent = new Intent(getApplicationContext(), result.class);
+            intent.putExtra("SCORE", score);
+            startActivity(intent);
         }
     }
         //When I touch the screen the box moves upward
