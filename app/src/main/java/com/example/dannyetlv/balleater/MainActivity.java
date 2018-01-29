@@ -14,6 +14,7 @@
 package com.example.dannyetlv.balleater;
 
 import android.content.Context;
+import android.graphics.Point;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -22,8 +23,10 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -60,10 +63,23 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         //Size
         private int frameHeight;
         private int boxSize;
+        private int screenWidth;
+        private int screenHeight;
 
 
         //Position
         private int boxY;
+        private int redX;
+        private int redY;
+        private int yellowX;
+        private int yellowY;
+        private int blueX;
+        private int blueY;
+        private int bombX;
+        private int bombY;
+
+
+
 
         //Initialize class
         private Handler handler = new Handler();
@@ -96,6 +112,15 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         bomb = (ImageView) findViewById(R.id.bomb);
 
+
+        //Get screen size
+            WindowManager wm = getWindowManager();
+            Display disp = wm.getDefaultDisplay();
+            Point size = new Point();
+            disp.getSize(size);
+
+            screenWidth = size.x;
+            screenHeight = size.y;
 
         //Move to out of screen
 
@@ -175,6 +200,16 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
 
     public void changePos() {
+
+            //Red
+            redX -= 12;
+            if (redX < 0) {
+                redX = screenWidth + 20;
+                redY = (int) Math.floor(Math.random()*(frameHeight-red.getHeight()));
+            }
+            red.setX(redX);
+            red.setY(redY);
+
 
 
             //Move Box
