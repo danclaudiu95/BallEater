@@ -1,9 +1,11 @@
 package com.example.dannyetlv.balleater;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class result extends AppCompatActivity {
@@ -34,5 +36,9 @@ public class result extends AppCompatActivity {
         else {
             highScoreLabel.setText("High Score : " + highScore);
         }
+    }
+
+    public void tryAgain (View view){
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
     }
 }
