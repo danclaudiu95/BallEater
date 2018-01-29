@@ -8,6 +8,11 @@
     tools:context="com.example.dannyetlv.balleater.MainActivity">
 
     <TextView
+        android:id="@+id/sensorID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
         android:id="@+id/scoreLabel"
         android:layout_width="match_parent"
         android:layout_height="50dp"
