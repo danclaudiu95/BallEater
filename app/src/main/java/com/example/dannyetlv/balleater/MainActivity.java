@@ -26,69 +26,83 @@ import org.w3c.dom.Text;
 public class MainActivity extends AppCompatActivity {
 
 
-    private TextView scoreLabel;
+        private TextView scoreLabel;
 
-    private TextView startLabel;
+        private TextView startLabel;
 
-    private ImageView box;
+        private ImageView box;
 
-    private ImageView red;
+        private ImageView red;
 
-    private ImageView yellow;
+        private ImageView yellow;
 
-    private ImageView blue;
+        private ImageView blue;
 
-    private ImageView bomb;
-
-
-    private int boxY;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-    scoreLabel = (TextView) findViewById(R.id.scoreLabel);
-    startLabel = (TextView) findViewById(R.id.startLabel);
+        private ImageView bomb;
 
 
-    box = (ImageView) findViewById(R.id.box);
+        private int boxY;
 
-    red = (ImageView) findViewById(R.id.red);
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
 
-    yellow = (ImageView) findViewById(R.id.yellow);
-
-    blue = (ImageView) findViewById(R.id.blue);
-
-    bomb = (ImageView) findViewById(R.id.bomb);
+        scoreLabel = (TextView) findViewById(R.id.scoreLabel);
+        startLabel = (TextView) findViewById(R.id.startLabel);
 
 
-    //Move to out of screen
+        box = (ImageView) findViewById(R.id.box);
 
-    red.setX(-80);
+        red = (ImageView) findViewById(R.id.red);
 
-    red.setY(-80);
+        yellow = (ImageView) findViewById(R.id.yellow);
 
-    yellow.setX(-80);
+        blue = (ImageView) findViewById(R.id.blue);
 
-    yellow.setY(-80);
+        bomb = (ImageView) findViewById(R.id.bomb);
 
-    blue.setX(-80);
 
-    blue.setY(-80);
+        //Move to out of screen
 
-    bomb.setX(-80);
+        red.setX(-80);
 
-    bomb.setY(-80);
+        red.setY(-80);
 
-    //Temporary
+        yellow.setX(-80);
 
-    startLabel.setVisibility(View.INVISIBLE);
+        yellow.setY(-80);
 
-    boxY = 500;
+        blue.setX(-80);
+
+        blue.setY(-80);
+
+        bomb.setX(-80);
+
+        bomb.setY(-80);
+
+        //Temporary
+
+        startLabel.setVisibility(View.INVISIBLE);
+
+        boxY = 500;
+        }
+
+
+
+        //When I touch the screen the box moves upward
+        public boolean onTouchEvent(MotionEvent me) {
+
+                if (me.getAction() == MotionEvent.ACTION_DOWN) {
+
+                        boxY -= 20;
+
+                }
+
+                box.setY(boxY);
+
+                return true;
+        }
+
+
     }
-
-
-
-
-}
