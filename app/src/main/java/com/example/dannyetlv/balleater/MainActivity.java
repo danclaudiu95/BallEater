@@ -210,9 +210,36 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             red.setX(redX);
             red.setY(redY);
 
+            //Yellow
+            yellowX -= 16;
+            if (yellowX < 0) {
+                yellowX = screenWidth + 10;
+                yellowY = (int) Math.floor(Math.random()*(frameHeight-yellow.getHeight()));
+            }
+            yellow.setX(yellowX);
+            yellow.setY(yellowY);
 
 
-            //Move Box
+            //Blue
+            blueX -= 20;
+            if (blueX < 0) {
+                blueX = screenWidth + 5000;
+                blueY = (int) Math.floor(Math.random()*(frameHeight-blue.getHeight()));
+            }
+            blue.setX(blueX);
+            blue.setY(blueY);
+
+            //Bomb
+            bombX -= 16;
+            if (bombX < 0) {
+                bombX = screenWidth + 6000;
+                bombY = (int) Math.floor(Math.random()*(frameHeight-bomb.getHeight()));
+            }
+            bomb.setX(bombX);
+            bomb.setY(bombY);
+
+
+        //Move Box
             if (action_flg == true) {
                 //Touching
                 boxY -= 20;
