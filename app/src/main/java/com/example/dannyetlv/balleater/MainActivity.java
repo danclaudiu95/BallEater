@@ -13,6 +13,7 @@
 
 package com.example.dannyetlv.balleater;
 
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -22,6 +23,9 @@ import android.widget.TextView;
 
 
 import org.w3c.dom.Text;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,7 +45,12 @@ public class MainActivity extends AppCompatActivity {
         private ImageView bomb;
 
 
+        //Position
         private int boxY;
+
+        //Initialize class
+        private Handler handler = new Handler();
+        private Timer timer = new Timer();
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -86,8 +95,26 @@ public class MainActivity extends AppCompatActivity {
         startLabel.setVisibility(View.INVISIBLE);
 
         boxY = 500;
+
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        //call changePos every 20 seconds
+                        changePos();
+
+                    }
+                })
+            }
+        }, 0, 20);
         }
 
+
+        public void changePos() {
+            box.setY(boxY);
+        }
 
 
         //When I touch the screen the box moves upward
