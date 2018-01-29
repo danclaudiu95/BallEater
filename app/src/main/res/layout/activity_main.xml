@@ -43,27 +43,27 @@
 
         <ImageView
             android:id="@+id/red"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:src="@drawable/red_ball_small" />
 
         <ImageView
             android:id="@+id/yellow"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
             android:src="@drawable/yellow_ball_small" />
 
         <ImageView
             android:id="@+id/blue"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@drawable/blue_ball_small" />
 
         <ImageView
             android:id="@+id/bomb"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
-            android:src="@drawable/bomb_small" />
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:src="@drawable/bomb_large" />
 
     </FrameLayout>
 

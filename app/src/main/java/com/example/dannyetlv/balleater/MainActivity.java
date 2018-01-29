@@ -274,6 +274,37 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             score += 100;
             redX = -10;
         }
+
+        //Yellow
+        int yellowCenterX = yellowX + yellow.getWidth() / 2;
+        int yellowCenterY = yellowY + red.getHeight() / 2;
+        if (0 <= yellowCenterX && yellowCenterX <= boxSize &&
+                boxY <= yellowCenterY && yellowCenterY <= boxY + boxSize) {
+            score += 50;
+            yellowX = -10;
+        }
+
+        //Blue
+        int blueCenterX = blueX + blue.getWidth() / 2;
+        int blueCenterY = blueY + blue.getHeight() / 2;
+        if (0 <= blueCenterX && blueCenterX <= boxSize &&
+                boxY <= blueCenterY && blueCenterY <= boxY + boxSize) {
+            score += 30;
+            blueX = -10;
+        }
+
+        //Bomb
+        int bombCenterX = bombX + bomb.getWidth() / 2;
+        int bombCenterY = bombY + bomb.getHeight() / 2;
+        if (0 <= bombCenterX && bombCenterX <= boxSize &&
+                boxY <= bombCenterY && bombCenterY <= boxY + boxSize) {
+
+            //Stop timer
+            timer.cancel();
+            timer = null;
+
+            //Show result
+        }
     }
         //When I touch the screen the box moves upward
         public boolean onTouchEvent(MotionEvent me) {
