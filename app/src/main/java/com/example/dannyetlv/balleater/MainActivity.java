@@ -190,6 +190,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
             //Check box position
             if (boxY < 0 ) boxY = 0;
+
+            if (boxY > frameHeight - boxSize) boxY = frameHeight - boxSize;
             box.setY(boxY);
         }
 
