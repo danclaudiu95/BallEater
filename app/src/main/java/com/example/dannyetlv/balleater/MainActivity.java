@@ -78,6 +78,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         private int bombX;
         private int bombY;
 
+        //Score
+        private int score = 0;
+
 
 
 
@@ -140,7 +143,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         bomb.setY(-80);
 
-        //Temporary
+            scoreLabel.setText("Score :  0");
 
 
 
@@ -200,7 +203,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
 
     public void changePos() {
-
+            hitCheck();
             //Red
             redX -= 12;
             if (redX < 0) {
@@ -255,9 +258,23 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
             if (boxY > frameHeight - boxSize) boxY = frameHeight - boxSize;
             box.setY(boxY);
+
+            scoreLabel.setText("Score : " + score);
         }
 
 
+        public void hitCheck() {
+            //If the center of the ball is in the box, it counts as a hit
+
+        //Red
+        int redCenterX = redX + red.getWidth() / 2;
+        int redCenterY = redY + red.getHeight() / 2;
+        if (0 <= redCenterX && redCenterX <= boxSize &&
+                boxY <= redCenterY && redCenterY <= boxY + boxSize) {
+            score += 100;
+            redX = -10;
+        }
+    }
         //When I touch the screen the box moves upward
         public boolean onTouchEvent(MotionEvent me) {
 
