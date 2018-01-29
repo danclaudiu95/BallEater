@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Status check
         private boolean action_flg = false;
+        private boolean start_flg = false;
 
 
         @Override
@@ -96,23 +97,11 @@ public class MainActivity extends AppCompatActivity {
 
         //Temporary
 
-        startLabel.setVisibility(View.INVISIBLE);
+
 
         boxY = 500;
 
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        //call changePos every 20 seconds
-                        changePos();
 
-                    }
-                });
-            }
-        }, 0, 20);
         }
 
 
@@ -136,13 +125,34 @@ public class MainActivity extends AppCompatActivity {
         //When I touch the screen the box moves upward
         public boolean onTouchEvent(MotionEvent me) {
 
+            if(start_flg == false) {
+                start_flg = true;
+                startLabel.setVisibility(View.GONE);
+
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                //call changePos every 20 seconds
+                                changePos();
+
+                            }
+                        });
+                    }
+                }, 0, 20);
+            }
+            else{
                 if (me.getAction() == MotionEvent.ACTION_DOWN) {
 
-                        action_flg = true;
+                    action_flg = true;
 
                 } else if (me.getAction() == MotionEvent.ACTION_UP) {
                     action_flg = false;
                 }
+            }
+
 
                 return true;
         }
