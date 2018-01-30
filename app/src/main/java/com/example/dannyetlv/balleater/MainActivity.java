@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         //Initialize class
         private Handler handler = new Handler();
         private Timer timer = new Timer();
+        private SoundPlayer sound;
 
         //Status check
         private boolean action_flg = false;
@@ -98,6 +99,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
+
+            sound = new SoundPlayer(this);
             mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
             mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
 
@@ -271,6 +274,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 boxY <= redCenterY && redCenterY <= boxY + boxSize) {
             score += 100;
             redX = -10;
+            sound.playHitSound();
         }
 
         //Yellow
@@ -280,6 +284,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 boxY <= yellowCenterY && yellowCenterY <= boxY + boxSize) {
             score += 50;
             yellowX = -10;
+            sound.playHitSound();
         }
 
         //Blue
@@ -289,6 +294,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 boxY <= blueCenterY && blueCenterY <= boxY + boxSize) {
             score += 30;
             blueX = -10;
+            sound.playHitSound();
         }
 
         //Bomb
@@ -300,6 +306,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             //Stop timer
             timer.cancel();
             timer = null;
+
+            sound.playOverSound();
 
             //Show result
             Intent intent = new Intent(getApplicationContext(), result.class);

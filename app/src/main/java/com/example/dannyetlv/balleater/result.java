@@ -43,15 +43,5 @@ public class result extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), start.class));
     }
 
-    //Disable Return Button
-    @Override
-    public boolean dispatchKeyEvent(KeyEvent event){
-        if (event.getAction() == KeyEvent.ACTION_DOWN){
-            switch(event.getKeyCode()){
-                case KeyEvent.KEYCODE_BACK:
-                    return true;
-            }
-        }
-        return super.dispatchKeyEvent(event);
-    }
+
 }
