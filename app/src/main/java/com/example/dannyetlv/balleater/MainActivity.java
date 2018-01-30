@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity  {
     }
 
     private TextView scoreLabel;
-
+        //create variabiles for each object in the game
         private TextView startLabel;
 
         private ImageView box;
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity  {
         private int screenWidth;
         private int screenHeight;
 
-
+        //set position variabiles for the object in the game
         //Position
         private int boxY;
         private int redX;
@@ -153,10 +153,11 @@ public class MainActivity extends AppCompatActivity  {
 
         }
 
-
+    //make randomly positions of the next ball that will move from the right to the left
     public void changePos() {
             hitCheck();
             //Red
+            //when the red ball leaves the screen a new one starts from the right
             redX -= 12;
             if (redX < 0) {
                 redX = screenWidth + 20;
@@ -166,6 +167,7 @@ public class MainActivity extends AppCompatActivity  {
             red.setY(redY);
 
             //Yellow
+            //when the Yellow ball leaves the screen a new one starts from the right
             yellowX -= 16;
             if (yellowX < 0) {
                 yellowX = screenWidth + 10;
@@ -176,18 +178,21 @@ public class MainActivity extends AppCompatActivity  {
 
 
             //Blue
+            //when the Yellow ball leaves the screen a new one starts from the right
             blueX -= 20;
             if (blueX < 0) {
-                blueX = screenWidth + 5000;
+                blueX = screenWidth + 50;
                 blueY = (int) Math.floor(Math.random()*(frameHeight-blue.getHeight()));
             }
             blue.setX(blueX);
             blue.setY(blueY);
 
             //Bomb
+            //when the bomb leaves the screen a new one starts from the right. I set the "distance" to 5000
+            //so that the bomb goes rarely
             bombX -= 16;
             if (bombX < 0) {
-                bombX = screenWidth + 6000;
+                bombX = screenWidth + 5000;
                 bombY = (int) Math.floor(Math.random()*(frameHeight-bomb.getHeight()));
             }
             bomb.setX(bombX);
